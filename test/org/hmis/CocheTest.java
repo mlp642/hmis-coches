@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -88,7 +89,7 @@ class CocheTest {
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = {"Toyota", "Ford", "Mercedes", "Audi"})
+	@ValueSource(strings = {"Toyota", "Ford", "Chevrolet", "Honda"})
 	void testGetMarcaParameterized(String marca) {
 
 		Coche c = new Coche(marca, "", 0, 0);
@@ -104,7 +105,7 @@ class CocheTest {
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = {"Corolla", "Fiesta", "Benz", "A1"})
+	@ValueSource(strings = {"Corolla", "Mustang", "Camaro", "Civic"})
 	void testGetModeloParameterized(String modelo) {
 
 		Coche c = new Coche("", modelo, 0, 0);
@@ -115,11 +116,11 @@ class CocheTest {
 	@Test
 	void testGetAño() {
 		Coche coche = new Coche ("Toyota", "Corolla", 2022, 22000);
-		assertEquals(true, coche.getAño() == 2022);  // Action // Assert
+		assertEquals(2022, coche.getAño());  // Action // Assert
 	}
 	
 	@ParameterizedTest
-	@ValueSource(ints = {2022, 2010, 2015, 2018})
+	@ValueSource(ints = {2022, 2021, 2023, 2022})
 	void testGetAñoParameterized(int año) {
 
 		Coche c = new Coche("", "", año, 0);	
@@ -129,11 +130,12 @@ class CocheTest {
 	@Test
 	void testGetPrecio() {
 		Coche coche = new Coche ("Toyota", "Corolla", 2022, 22000);
-		assertTrue(coche.getPrecio() == 22000);  // Action // Assert
+		//assertTrue(coche.getPrecio() == 22000);  // Action // Assert
+		assertEquals(22000, coche.getPrecio());
 	}
 	
 	@ParameterizedTest
-	@ValueSource(ints = {22000, 10500, 14000, 34000})
+	@ValueSource(ints = {22000, 45000, 52000, 25000})
 	void testGetPrecioParameterized(int precio) {
 
 		Coche c = new Coche("", "", 0, precio);	
@@ -148,7 +150,7 @@ class CocheTest {
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = {"Corolla", "Fiesta", "Benz", "A1"})
+	@ValueSource(strings = {"Corolla", "Mustang", "Camaro", "Civic"})
 	void testSetModeloParameterized(String modelo) {
 
 		Coche c = new Coche();	
@@ -160,12 +162,11 @@ class CocheTest {
 	void testSetAño() {
 		Coche coche = new Coche ();
 		coche.setAño(2000);
-		assertTrue(coche.getAño()==2000);
-		
+		assertEquals(2000 , coche.getAño());
 	}
 	
 	@ParameterizedTest
-	@ValueSource(ints = {2022, 2010, 2015, 2018})
+	@ValueSource(ints = {2022, 2021, 2023, 2022})
 	void testSetAñoParameterized(int año) {
 
 		Coche c = new Coche();	
@@ -177,11 +178,11 @@ class CocheTest {
 	void testSetPrecio() {
 		Coche coche = new Coche ();
 		coche.setPrecio(24000);
-		assertEquals(true, coche.getPrecio() == 24000);   // Action // Assert
+		assertEquals(24000, coche.getPrecio());   // Action // Assert
 	}
 	
 	@ParameterizedTest
-	@ValueSource(ints = {22000, 10500, 14000, 34000})
+	@ValueSource(ints = {22000, 45000, 52000, 25000})
 	void testSetPrecioParameterized(int precio) {
 
 		Coche c = new Coche();	
@@ -197,7 +198,7 @@ class CocheTest {
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = {"Toyota", "Ford", "Mercedes", "Audi"})
+	@ValueSource(strings = {"Toyota", "Ford", "Chevrolet", "Honda"})
 	void testSetMarcaParameterized(String marca) {
 
 		Coche c = new Coche();
@@ -213,17 +214,22 @@ class CocheTest {
 	}
 	
 	@ParameterizedTest
-	@CsvSource({"Toyota, Corolla, 2022, 22000",
-				"Mercedes, Benz, 2010, 20000",
-				"Ford, Fiesta, 2021, 17000",
-				"Audi, A1, 2015, 32000"})
-	void testToStringParameterized(String marca, String modelo, int año, int precio) {
-
-		String cadena = "Coche [marca=" + marca + ", modelo=" + modelo + ", año=" + año + ", precio=" + precio + "]";
-
+	@CsvFileSource(files = "test/org/hmis/coches.csv")
+	void testToStringParameterized(String cochesCSV) {
+		
+		String[] cocheCadena = cochesCSV.split("; ");
+		String[] coche = cocheCadena[0].split(", ");
+		
+		String marca = coche[0];
+		String modelo = coche[1];
+		int año = Integer.parseInt(coche[2]);
+		int precio = Integer.parseInt(coche[3]);
+		
+		String resultado = cocheCadena[1];
+		
 		Coche c = new Coche(marca, modelo, año, precio);
 		
-		assertEquals(cadena, c.toString());
+		assertEquals(resultado, c.toString());
 	}
 	
 }
