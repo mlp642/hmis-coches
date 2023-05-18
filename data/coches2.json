@@ -1,0 +1,16 @@
+{
+  "coches": [
+    {
+      "marca": "Chevrolet",
+      "modelo": "Camaro",
+      "anio": 2023,
+      "precio": 52000
+    },
+    {
+      "marca": "Honda",
+      "modelo": "Civic",
+      "anio": 2022,
+      "precio": 25000
+    }
+  ]
+}
