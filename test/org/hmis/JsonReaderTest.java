@@ -46,11 +46,11 @@ class JsonReaderTest {
 		"data/coches2.json, Chevrolet, Camaro, 2023, 52000",
 		"data/coches3.json,  Honda, Civic, 2022, 25000"})
 	
-	void testLeerCochesJSONprimero(String ruta, String marca, String modelo, int año, int precio) {
+	void testLeerCochesJSONprimero(String ruta, String marca, String modelo, int anio, int precio) {
 
 		Coche[] coches = JsonReader.leerCochesJSON(ruta);
 
-		Coche primero = new Coche (marca, modelo, año, precio);
+		Coche primero = new Coche (marca, modelo, anio, precio);
 
 		assertEquals(primero, coches[0]);
 		assertTrue(primero.equals(coches[0]));

@@ -114,9 +114,9 @@ class CocheTest {
 	}
 	
 	@Test
-	void testGetAño() {
+	void testGetAnio() {
 		Coche coche = new Coche ("Toyota", "Corolla", 2022, 22000);
-		assertEquals(2022, coche.getAño());  // Action // Assert
+		assertEquals(2022, coche.getAnio());  // Action // Assert
 	}
 	
 	@ParameterizedTest
@@ -124,7 +124,7 @@ class CocheTest {
 	void testGetAñoParameterized(int año) {
 
 		Coche c = new Coche("", "", año, 0);	
-		assertEquals(año, c.getAño());
+		assertEquals(año, c.getAnio());
 	}
 	
 	@Test
@@ -159,10 +159,10 @@ class CocheTest {
 	}
 
 	@Test
-	void testSetAño() {
+	void testSetAnio() {
 		Coche coche = new Coche ();
-		coche.setAño(2000);
-		assertEquals(2000 , coche.getAño());
+		coche.setAnio(2000);
+		assertEquals(2000 , coche.getAnio());
 	}
 	
 	@ParameterizedTest
@@ -170,8 +170,8 @@ class CocheTest {
 	void testSetAñoParameterized(int año) {
 
 		Coche c = new Coche();	
-		c.setAño(año);
-		assertEquals(año, c.getAño());
+		c.setAnio(año);
+		assertEquals(año, c.getAnio());
 	}
 
 	@Test
@@ -209,7 +209,7 @@ class CocheTest {
 	@Test
 	void testToString() {
 		Coche coche = new Coche ("Toyota", "Corolla", 2022, 22000);
-		assertEquals("Coche [marca=Toyota, modelo=Corolla, año=2022, precio=22000]" , coche.toString());
+		assertEquals("Coche [marca=Toyota, modelo=Corolla, anio=2022, precio=22000]" , coche.toString());
 	
 	}
 	
@@ -222,12 +222,12 @@ class CocheTest {
 		
 		String marca = coche[0];
 		String modelo = coche[1];
-		int año = Integer.parseInt(coche[2]);
+		int anio = Integer.parseInt(coche[2]);
 		int precio = Integer.parseInt(coche[3]);
 		
 		String resultado = cocheCadena[1];
 		
-		Coche c = new Coche(marca, modelo, año, precio);
+		Coche c = new Coche(marca, modelo, anio, precio);
 		
 		assertEquals(resultado, c.toString());
 	}
