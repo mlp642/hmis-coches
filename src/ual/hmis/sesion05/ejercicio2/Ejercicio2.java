@@ -6,11 +6,15 @@ public class Ejercicio2 {
 		
 		// comprobar que sean distintos de vacio
 		
-		if(username.isEmpty() || password.isEmpty()) return false;
+		if(username.isEmpty() || password.isEmpty()) {
+			return false;
+		}
 		
 		// comprobar que la longitud sea < 30
 		
-		if(username.length() >=30 || password.length() >= 30) return false;
+		if(username.length() >=30 || password.length() >= 30) {
+			return false;
+		}
 		
 		// comprobar que contiene al menos una mayuscula , una minuscula y un digito
 		
@@ -20,12 +24,20 @@ public class Ejercicio2 {
 		
 		for (char c : password.toCharArray()) {
 			
-			if(Character.isUpperCase(c)) contieneMayus = true;
-			if(Character.isLowerCase(c)) contieneMinus = true;
-			if(Character.isDigit(c)) contieneDigito = true;
+			if(Character.isUpperCase(c)) {
+				contieneMayus = true;
+			}
+			if(Character.isLowerCase(c)) {
+				contieneMinus = true;
+			}
+			if(Character.isDigit(c)) {
+				contieneDigito = true;
+			}
 		}
 		
-		if (!contieneMayus || !contieneMinus || !contieneDigito) return false;
+		if (!contieneMayus || !contieneMinus || !contieneDigito) {
+			return false;
+		}
 		
 		// llamar al método de la bbdd
 		
@@ -36,8 +48,12 @@ public class Ejercicio2 {
 		
 		// método mock (simulado)
 		
-		if (username.equals("user") && password.equals("Password1")) return true; 
-		else return false;
+		if (username.equals("user") && password.equals("Password1")) {
+			return true; 
+		}
+		else {
+			return false;
+		}
 	}
 
 }

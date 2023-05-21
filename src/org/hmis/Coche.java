@@ -58,12 +58,18 @@ public class Coche {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+			
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+			
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
+			
 		Coche other = (Coche) obj;
 		return anio == other.anio && 
 				Objects.equals(marca, other.marca) && 

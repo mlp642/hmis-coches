@@ -5,26 +5,26 @@ import java.util.*;
 public class Ejercicio5 {
 	
 	
-	public <T extends Comparable<T>> Set<T> combinarConjuntosOrdenados (Set<T> a , Set<T> b) {
+	public <T extends Comparable<T>> Set<T> combinarConjuntosOrdenados (Set<T> conjunto1 , Set<T> conjunto2) {
 		
 		
 		// casos en el que alguna sea vacia o las dos
 		
-		if(a.isEmpty()) {
-			if(b.isEmpty()) {
+		if(conjunto1.isEmpty()) {
+			if(conjunto2.isEmpty()) {
 				return new TreeSet<T>();
 			}
 			else {
-				return b;
+				return conjunto2;
 			}
 		}
-		else if (b.isEmpty()) {
-			return a;
+		else if (conjunto2.isEmpty()) {
+			return conjunto1;
 		}
 		
-		Set<T> resultado = new TreeSet<T>(a);
+		Set<T> resultado = new TreeSet<T>(conjunto1);
 	
-        resultado.addAll(b);
+        resultado.addAll(conjunto2);
         
       
         return resultado;
