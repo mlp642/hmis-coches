@@ -15,7 +15,9 @@ public class Ejercicio1 {
 		else if (numero % 5 == 0) {
 		resultado = transformar (numero/5);
 		}
-		else return numero;
+		else {
+			return numero;
+		}
 		return resultado;
 	}
 }
