@@ -50,6 +50,14 @@ pipeline {
                 }
             }
         }
+        
+         stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv(credentialsId: 'sonar_server', installationName: 'servidor_sonarqube') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
 
         stage ('Documentation') {
             steps {
